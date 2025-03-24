@@ -1,0 +1,16 @@
+{
+
+
+  "UniqueID": "ApryllForever.ArmorBuffs",
+  "Name": "ArmorBuffs",
+  "Author": "ApryllForever",
+  "Version": "1.0.0",
+  "Description": "Armor Buffs!!!",
+  "MinimumApiVersion": "3.16.0",
+  "EntryDll": "ArmorBuffs.dll",
+  "UpdateKeys": [ "Nexus: " ]
+
+
+
+
+}

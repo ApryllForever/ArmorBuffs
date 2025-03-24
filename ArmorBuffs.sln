@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34316.72
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArmorBuffs", "ArmorBuffs.csproj", "{DD563210-CF47-4F4F-B1ED-33B4C28D49DE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD563210-CF47-4F4F-B1ED-33B4C28D49DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD563210-CF47-4F4F-B1ED-33B4C28D49DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD563210-CF47-4F4F-B1ED-33B4C28D49DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD563210-CF47-4F4F-B1ED-33B4C28D49DE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0338ADE6-5B03-4182-98C2-E57ECEF8C4C3}
+	EndGlobalSection
+EndGlobal
