@@ -16,6 +16,7 @@ using StardewModdingAPI.Enums;
 using StardewModdingAPI.Events;
 using StardewValley;
 using StardewValley.Buffs;
+using StardewValley.Characters;
 using StardewValley.GameData.Characters;
 using StardewValley.ItemTypeDefinitions;
 using StardewValley.Locations;
@@ -2216,10 +2217,19 @@ namespace ArmorBuffs
                     case "(S)1297": //Island Bikini
                     case "(S)1134": //Regular Bikini
                         CharacterData data = __instance.GetData();
-                        if (data.CustomFields.ContainsKey("ClothesGiveBuffs.NotFlirt"))
+                        if (data.CustomFields != null && data.CustomFields.ContainsKey("ClothesGiveBuffs.NotFlirt"))
                         {
                             break;
                         }
+
+                        if(__instance is Child)
+                        { break; }
+
+                        if (__instance.Age == 2 ) 
+                        {
+                            break;
+                        }
+
                         // if (BikiniFlirt == false)
                         if (!bikiniDIalogue.Contains(__instance.Name) && Config.Flirt)
                         {

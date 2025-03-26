@@ -2,13 +2,14 @@
 
 
   "UniqueID": "ApryllForever.ArmorBuffs",
-  "Name": "ArmorBuffs",
+  "Name": "Clothes Give Buffs",
   "Author": "ApryllForever",
-  "Version": "1.0.0",
+  "Version": "1.0.1",
   "Description": "Armor Buffs!!!",
   "MinimumApiVersion": "3.16.0",
   "EntryDll": "ArmorBuffs.dll",
-  "UpdateKeys": [ "Nexus: " ]
+  "UpdateKeys": [ "Nexus: 32468" ]
+
 
 
 
