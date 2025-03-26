@@ -16,6 +16,7 @@ using StardewModdingAPI.Enums;
 using StardewModdingAPI.Events;
 using StardewValley;
 using StardewValley.Buffs;
+using StardewValley.GameData.Characters;
 using StardewValley.ItemTypeDefinitions;
 using StardewValley.Locations;
 using StardewValley.Objects;
@@ -159,14 +160,65 @@ namespace ArmorBuffs
             int x = (int)__instance.TileLocation.X;
             int y = (int)__instance.TileLocation.Y;
 
+            Item item = null;
+            switch (r.Next(13))
+            {
+                case 0:
+                    item = ItemRegistry.Create("(S)ApryllForever.ArmorBuffs_UnrepentantCuirass");
+                    break;
+                case 1:
+                    item = ItemRegistry.Create("(S)ApryllForever.ArmorBuffs_CherryPetalCuirass");
+                    break;
+                case 2:
+                    item = ItemRegistry.Create("(S)ApryllForever.ArmorBuffs_IndigoSirenShirt");
+                    break;
+                case 3:
+                    item = ItemRegistry.Create("(S)ApryllForever.ArmorBuffs_MermaidActionVest"); //MermaidActionCorset 
+                    break;
+                case 4:
+                    item = ItemRegistry.Create("(S)ApryllForever.ArmorBuffs_InfidelCuirass"); //+ r.Next(1362, 1370));
+                    break;
+                case 5:
+                    item = ItemRegistry.Create("(S)ApryllForever.ArmorBuffs_ClamshellBra");
+                    break;
+                case 6:
+                    item = ItemRegistry.Create("(S)ApryllForever.ArmorBuffs_MermaidActionCorset");
+                    break;
+                case 7:
+                    item = ItemRegistry.Create("(S)ApryllForever.ArmorBuffs_ClamshellBra");
+                    break;
+                case 8:
+                    item = ItemRegistry.Create("(S)ApryllForever.ArmorBuffs_MermaidActionCorset");
+                    break;
+                case 9:
+                    item = ItemRegistry.Create("(S)ApryllForever.ArmorBuffs_IndigoSirenShirt");
+                    break;
+                case 10:
+                    item = ItemRegistry.Create("(S)ApryllForever.ArmorBuffs_MermaidActionVest"); //MermaidActionCorset 
+                    break;
+                case 11:
+                    item = ItemRegistry.Create("(S)ApryllForever.ArmorBuffs_ClamshellBra");
+                    break;
+                case 12:
+                    item = ItemRegistry.Create("(S)ApryllForever.ArmorBuffs_IndigoSirenShirt");
+                    break;
+
+            }
+            if (item == null || item.Name.Contains("Error"))
+            {
+                item = ItemRegistry.Create("(S)ApryllForever.ArmorBuffs_ClamshellBra");
+            }
+
+            if (Game1.random.NextDouble() <= 0.029)
+            {
+                Game1.createItemDebris(item, __instance.TileLocation, 1);
+
+            }
 
             if (Game1.player.shirtItem.Value != null)
             {
-
                 if (Game1.player.shirtItem.Value.ItemId.Equals("1034")) //Link Shirt
                 {
-                     
-
                     if (Game1.random.NextDouble() <= 0.05)
                     {
                         if (Game1.random.NextDouble() <= 0.4)
@@ -194,15 +246,38 @@ namespace ArmorBuffs
                             Game1.createMultipleObjectDebris("(O)930", x, y, r.Next(1, 3), who.UniqueMultiplayerID, Game1.currentLocation); //Hearts
                         }
                     }
-
-
-
-
                 }
-
+                if (Game1.player.shirtItem.Value.ItemId.Equals("1242")) //Abigail Shirt!
+                {
+                    if (Game1.random.NextDouble() <= 0.05)
+                    {
+                        if (Game1.random.NextDouble() <= 0.4)
+                        {
+                            Game1.playSound("cowboy_powerup");
+                        }
+                        Game1.createMultipleObjectDebris("(O)GoldCoin", x, y, r.Next(1, 3), who.UniqueMultiplayerID, Game1.currentLocation);
+                    }
+                    if (Game1.random.NextDouble() <= 0.03)
+                    {
+                        if (Game1.random.NextDouble() <= 0.4)
+                        {
+                            Game1.playSound("cowboy_powerup");
+                        }
+                        Game1.createMultipleObjectDebris("(O)287", x, y, r.Next(1, 3), who.UniqueMultiplayerID, Game1.currentLocation);
+                    }
+                    if (Game1.player.health <= 25)
+                    {
+                        if (Game1.random.NextDouble() <= 0.2)
+                        {
+                            if (Game1.random.NextDouble() <= 0.4)
+                            {
+                                Game1.playSound("cowboy_powerup");
+                            }
+                            Game1.createMultipleObjectDebris("(O)930", x, y, r.Next(1, 3), who.UniqueMultiplayerID, Game1.currentLocation); //Hearts
+                        }
+                    }
+                }
             }
-
-
         }
 
 
@@ -226,7 +301,7 @@ namespace ArmorBuffs
             int y = (int)__instance.TileLocation.Y;
 
             Item item = null;
-            switch (r.Next(7))
+            switch (r.Next(13))
             {
                 case 0:
                     item = ItemRegistry.Create("(S)ApryllForever.ArmorBuffs_UnrepentantCuirass");
@@ -249,16 +324,34 @@ namespace ArmorBuffs
                 case 6:
                     item = ItemRegistry.Create("(S)ApryllForever.ArmorBuffs_MermaidActionCorset");
                     break;
+                case 7:
+                    item = ItemRegistry.Create("(S)ApryllForever.ArmorBuffs_ClamshellBra");
+                    break;
+                case 8:
+                    item = ItemRegistry.Create("(S)ApryllForever.ArmorBuffs_MermaidActionCorset");
+                    break;
+                case 9:
+                    item = ItemRegistry.Create("(S)ApryllForever.ArmorBuffs_IndigoSirenShirt");
+                    break;
+                case 10:
+                    item = ItemRegistry.Create("(S)ApryllForever.ArmorBuffs_MermaidActionVest"); //MermaidActionCorset 
+                    break;
+                case 11:
+                    item = ItemRegistry.Create("(S)ApryllForever.ArmorBuffs_ClamshellBra");
+                    break;
+                case 12:
+                    item = ItemRegistry.Create("(S)ApryllForever.ArmorBuffs_IndigoSirenShirt");
+                    break;
+
             }
             if (item == null || item.Name.Contains("Error"))
             {
                 item = ItemRegistry.Create("(S)ApryllForever.ArmorBuffs_ClamshellBra");
             }
 
-            if (Game1.random.NextDouble() <= 0.06)
+            if (Game1.random.NextDouble() <= 0.039)
             {
                 Game1.createItemDebris(item, __instance.TileLocation, 1);
-
             }
 
 
@@ -287,6 +380,30 @@ namespace ArmorBuffs
                         }
                     }
                 }
+
+                if (Game1.player.shirtItem.Value.ItemId.Equals("1242")) //Long Vest - Abigail Shirt!
+                {
+                    if (Game1.random.NextDouble() <= 0.05)
+                    {
+                        Game1.createMultipleObjectDebris("(O)GoldCoin", x, y, r.Next(1, 3), who.UniqueMultiplayerID, Game1.currentLocation);
+                    }
+                    if (Game1.random.NextDouble() <= 0.03)
+                    {
+                        Game1.createMultipleObjectDebris("(O)287", x, y, r.Next(1, 3), who.UniqueMultiplayerID, Game1.currentLocation);
+                    }
+                    if (Game1.random.NextDouble() <= 0.03)
+                    {
+                        Game1.createMultipleObjectDebris("(O)930", x, y, r.Next(1, 3), who.UniqueMultiplayerID, Game1.currentLocation); //Hearts
+                    }
+                    if (Game1.player.health <= 25)
+                    {
+                        if (Game1.random.NextDouble() <= 0.2)
+                        {
+                            Game1.createMultipleObjectDebris("(O)930", x, y, r.Next(1, 3), who.UniqueMultiplayerID, Game1.currentLocation); //Hearts
+                        }
+                    }
+                }
+
 
                 if (Game1.player.shirtItem.Value.ItemId.Equals("ApryllForever.ArmorBuffs_UnrepentantCuirass"))
                 {
@@ -454,224 +571,93 @@ namespace ArmorBuffs
 
             if (__instance.QualifiedItemId.Equals("(B)854")) //Mermaid Shoes
             {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+2 Attack, +1 Luck, +1 Speed", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
+                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+4 Attack, +1 Luck, +1 Speed", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
                 y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-
+            }
+            if (__instance.QualifiedItemId.Equals("(B)855")) //Dragon Shoes
+            {
+                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Attack, +2 Luck, +1 Speed", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
+                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
+            }
+            if (__instance.QualifiedItemId.Equals("(B)853")) //CinderClown Shoes
+            {
+                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+2 Attack, +2 Luck, +2 Speed", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
+                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
             }
 
+
+            if (__instance.QualifiedItemId.Equals("(B)504")) //Sneakers
+            {
+                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+2 Speed", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
+                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
+            }
+            if (__instance.QualifiedItemId.Equals("(B)505")) //Rubber Boots
+            {
+                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+0.5 Speed", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
+                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
+            }
+            if (__instance.QualifiedItemId.Equals("(B)506")) //Leather Boots
+            {
+                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+0.5 Speed", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
+                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
+            }
+            if (__instance.QualifiedItemId.Equals("(B)507")) //Work Boots
+            {
+                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+0.5 Speed", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
+                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
+            }
+            if (__instance.QualifiedItemId.Equals("(B)509")) //Tundra Boots
+            {
+                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+0.5 Speed", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
+                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
+            }
+            if (__instance.QualifiedItemId.Equals("(B)510))")) //Therml Boots
+            {
+                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+0.5 Speed", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
+                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
+            }
+
+            if (__instance.QualifiedItemId.Equals("(B)508")) //Combat Boots
+            {
+                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+1 Speed", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
+                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
+            }
+            if (__instance.QualifiedItemId.Equals("(B)511")) //Dark Boots
+            {
+                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+0.5 Speed", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
+                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
+            }
+            if (__instance.QualifiedItemId.Equals("(B)512")) //Firewalker Boots
+            {
+                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+0.5 Speed", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
+                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
+            }
+            if (__instance.QualifiedItemId.Equals("(B)514")) //Space Boots
+            {
+                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+0.5 Speed", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
+                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
+            }
+            if (__instance.QualifiedItemId.Equals("(B)513")) //Genie Boots
+            {
+                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+1 Speed, +1 Luck", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
+                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
+            }
+            if (__instance.QualifiedItemId.Equals("(B)515")) //CowHuman Boots
+            {
+                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+1 Farming, +1 Foraging", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
+                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
+            }
+            if (__instance.QualifiedItemId.Equals("(B)804")) //Emily Boots
+            {
+                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+1 Speed, +2 Luck", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
+                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
+            }
+            if (__instance.QualifiedItemId.Equals("(B)878")) //Crystal Shoes
+            {
+                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+2 Attack, +2 Speed, +2 Luck", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
+                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
+            }
         }
-        /*
-        private static void Hat_drawTooltipPostfix(SpriteBatch spriteBatch, ref int x, ref int y, SpriteFont font, float alpha, StringBuilder overrideText, Hat __instance)
-        {
-            ParsedItemData itemData;
-            itemData = ItemRegistry.GetDataOrErrorItem(__instance.QualifiedItemId);
-            string DisplayNameFuckIt = itemData.DisplayName;
-            string descriptionFuckIt = itemData.Description;
-      
-            if (__instance.QualifiedItemId.Equals("(H)4")) //Straw Hat
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+2 Farming", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-
-            if (__instance.QualifiedItemId.Equals("(H)5")) //Cop Hat
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+1 Attack", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-
-            if (__instance.QualifiedItemId.Equals("(H)7")) //Plum Chapeau
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+1 Foraging, +1 Speed", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-
-            if (__instance.QualifiedItemId.Equals("(H)19")) //Fedora
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+1 Attack, +1 Speed", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-
-            if (__instance.QualifiedItemId.Equals("(H)21")) //LuckyBow
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Luck", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-
-            if (__instance.QualifiedItemId.Equals("(H)26")) //Tiara
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Attack, +1 Speed", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-            if (__instance.QualifiedItemId.Equals("(H)27")) //Hard Hat
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Mining", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-            if (__instance.QualifiedItemId.Equals("(H)28")) //Souwester
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Fishing", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-
-            if (__instance.QualifiedItemId.Equals("(H)30")) //Watermelon Band
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+2 Farming, +1 Speed", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-
-            if (__instance.QualifiedItemId.Equals("(H)33")) //CowGal
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Farming, +1 Attack", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-
-            if (__instance.QualifiedItemId.Equals("(H)34")) //CowPoke
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Farming,  +1 Attack", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-
-            if (__instance.QualifiedItemId.Equals("(H)38")) //CowRed
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Farming, +1 Attack", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-
-            if (__instance.QualifiedItemId.Equals("(H)37")) //CowBlue
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Farming, +1 Attack", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-
-            if (__instance.QualifiedItemId.Equals("(H)47")) //Fashion Hat - Zorra Hat!
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+1 Luck, +3 Attack", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-
-            if (__instance.QualifiedItemId.Equals("(H)50")) //Knight 
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+4 Defense, +2 Attack", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-
-            if (__instance.QualifiedItemId.Equals("(H)51")) //Squire
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+1 Attack, +2 Defense", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-
-            if (__instance.QualifiedItemId.Equals("(H)55")) //Fishing Hat
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+2 Fishing", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-
-            if (__instance.QualifiedItemId.Equals("(H)62")) //Pirate Hat
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+2 Attack", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-            if (__instance.QualifiedItemId.Equals("(H)66")) //Garbage Hat
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+4 Attack, +2 Speed, -8 Charisma", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-            if (__instance.QualifiedItemId.Equals("(H)69")) //Bridal Veil
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+1 Luck", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-            if (__instance.QualifiedItemId.Equals("(H)70")) //Witch Hat
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+4 Attack, +2 Luck", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-            if (__instance.QualifiedItemId.Equals("(H)73")) //Magic Cowboy Hat
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Farming, +2 Luck", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-            if (__instance.QualifiedItemId.Equals("(H)75")) //Golden Hat
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Luck", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-
-            if (__instance.QualifiedItemId.Equals("(H)76")) //Deluxe Pirate Hat
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Attack, +1 Luck", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-            if (__instance.QualifiedItemId.Equals("(H)81")) //Deluxe CowPerson Hat
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Farming, +1 Luck", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-            if (__instance.QualifiedItemId.Equals("(H)83")) //Deluxe CowPerson Hat
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Farming, +1 Luck", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-            if (__instance.QualifiedItemId.Equals("(H)85")) //Swashbuckler Hat
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Attack", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-            if (__instance.QualifiedItemId.Equals("(H)90")) //Forager Hat
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Foraging", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-            if (__instance.QualifiedItemId.Equals("(H)91")) //Tiger Hat
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Attack", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-            if (__instance.QualifiedItemId.Equals("(H)93")) //Warrior Hat
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Attack", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-            if (__instance.QualifiedItemId.Equals("(H)AbigailsBow")) //Abigail's Bow
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Attack", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-            if (__instance.QualifiedItemId.Equals("(H)TricornHat")) //Tricorn
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Attack", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-            if (__instance.QualifiedItemId.Equals("(H)BlueBow")) //
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Attack", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-            if (__instance.QualifiedItemId.Equals("(H)DarkVelvetBow")) //
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Attack", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-            if (__instance.QualifiedItemId.Equals("(H)WhiteBow")) //
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Attack", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-            if (__instance.QualifiedItemId.Equals("(H)LeprechuanHat")) //
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Luck", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-            if (__instance.QualifiedItemId.Equals("(H)JunimoHat")) //
-            {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Foraging", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
-                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
-            }
-
-
-        }*/
 
 
         private static void Item_drawTooltipPostfix(SpriteBatch spriteBatch, ref int x, ref int y, SpriteFont font, float alpha, StringBuilder overrideText, Item __instance)
@@ -735,8 +721,6 @@ namespace ArmorBuffs
                 Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+2 Foraging, +2 Farming, +1 Luck, +1 Speed", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
                 y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
             }
-
-
 
             if (__instance.QualifiedItemId.Equals("(S)1239")) // Captain Shirt
             {
@@ -953,17 +937,37 @@ namespace ArmorBuffs
 
             if (__instance.QualifiedItemId.Equals("(S)ApryllForever.ArmorBuffs_UnrepentantCuirass"))
             {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Attack,+1 Speed,+4 Defense", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
+                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Attack, +1 Speed, +4 Defense", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
                 y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
             }
             if (__instance.QualifiedItemId.Equals("(S)ApryllForever.ArmorBuffs_CherryPetalCuirass"))
             {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Attack,+1 Speed,+4 Defense", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
+                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Attack, +1 Speed, +4 Defense", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
                 y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
             }
             if (__instance.QualifiedItemId.Equals("(S)ApryllForever.ArmorBuffs_InfidelCuirass"))
             {
-                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Attack,+1 Speed,+4 Defense", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
+                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Attack, +1 Speed, +4 Defense", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
+                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
+            }
+            if (__instance.QualifiedItemId.Equals("(S)ApryllForever.ArmorBuffs_ClamshellBra")) //Mermaid Shell Top
+            {
+                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Attack, +1 Crit Chance, +1 Luck, +1 Speed", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
+                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
+            }
+            if (__instance.QualifiedItemId.Equals("(S)ApryllForever.ArmorBuffs_IndigoSirenShirt"))
+            {
+                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+1 Speed, +3 Luck", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
+                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
+            }
+            if (__instance.QualifiedItemId.Equals("(S)ApryllForever.ArmorBuffs_MermaidActionVest"))
+            {
+                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Attack, +1 Speed", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
+                y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
+            }
+            if (__instance.QualifiedItemId.Equals("(S)ApryllForever.ArmorBuffs_MermaidActionCorset"))
+            {
+                Utility.drawTextWithShadow(spriteBatch, Game1.parseText("+3 Attack, +1 Speed", Game1.smallFont, getDescieWidthClothing()), font, new Vector2(x + 16, y + 32 + 4), Game1.textColor);
                 y += (int)font.MeasureString(Game1.parseText(descriptionFuckIt, Game1.smallFont, getDescieWidthClothing())).Y;
             }
 
@@ -1280,6 +1284,11 @@ namespace ArmorBuffs
                     case "(S)ApryllForever.ArmorBuffs_UnrepentantCuirass":
                     case "(S)ApryllForever.ArmorBuffs_CherryPetalCuirass":
                     case "(S)ApryllForever.ArmorBuffs_InfidelCuirass":
+                    case "(S)ApryllForever.ArmorBuffs_ClamshellBra":
+                    case "(S)ApryllForever.ArmorBuffs_IndigoSirenShirt":
+                    case "(S)ApryllForever.ArmorBuffs_MermaidActionVest":
+                    case "(S)ApryllForever.ArmorBuffs_MermaidActionCorset":
+
                         extra_rows_needed++;
                         extra_rows_needed++;
                         break;
@@ -1346,21 +1355,6 @@ namespace ArmorBuffs
 
 
         }
-        private static void Hat_getExtraSpaceNeededForTooltipSpecialIconsPostfix(SpriteFont font, int minWidth, int horizontalBuffer, int startingHeight, StringBuilder descriptionText, string boldTitleText, int moneyAmountToDisplayAtBottom, Hat __instance, ref Point __result)
-        {
-
-            Point dimensions;
-            dimensions = new Point(0, startingHeight);
-            int extra_rows_needed;
-            extra_rows_needed = 0;
-  
-
-            dimensions.X = (int)Math.Max(minWidth, font.MeasureString(Game1.content.LoadString("Strings\\UI:ItemHover_DefenseBonus", 9999)).X + (float)horizontalBuffer);
-            dimensions.Y += extra_rows_needed * Math.Max((int)font.MeasureString("TT").Y, 48);
-            __result = dimensions;
-
-
-        }
 
         private static void Boots_getExtraSpaceNeededForTooltipSpecialIconsPostfix(SpriteFont font, int minWidth, int horizontalBuffer, int startingHeight, StringBuilder descriptionText, string boldTitleText, int moneyAmountToDisplayAtBottom, Boots __instance, ref Point __result)
         {
@@ -1370,7 +1364,7 @@ namespace ArmorBuffs
             int extra_rows_needed;
             extra_rows_needed = 0;
          
-            if (__instance.QualifiedItemId.Equals("(B)854"))  //Mermaid Shoes
+            if (__instance.QualifiedItemId.Equals("(B)854") || __instance.QualifiedItemId.Equals("(B)853") ||__instance.QualifiedItemId.Equals("(B)855") || __instance.QualifiedItemId.Equals("(B)804") || __instance.QualifiedItemId.Equals("(B)878"))  //Mermaid Shoes
             {
                 extra_rows_needed++;
                 extra_rows_needed++;
@@ -1386,7 +1380,7 @@ namespace ArmorBuffs
                 __result = dimensions;
             }
 
-            if (__instance.QualifiedItemId.Equals("(B)806")) //Leprechaun Shoes
+            if (__instance.QualifiedItemId.Equals("(B)806") || __instance.QualifiedItemId.Equals("(B)504") || __instance.QualifiedItemId.Equals("(B)505") || __instance.QualifiedItemId.Equals("(B)506") || __instance.QualifiedItemId.Equals("(B)507") || __instance.QualifiedItemId.Equals("(B)508") || __instance.QualifiedItemId.Equals("(B)509") || __instance.QualifiedItemId.Equals("(B)510") || __instance.QualifiedItemId.Equals("(B)511")|| __instance.QualifiedItemId.Equals("(B)512")|| __instance.QualifiedItemId.Equals("(B)513")|| __instance.QualifiedItemId.Equals("(B)514")|| __instance.QualifiedItemId.Equals("(B)515")) //Leprechaun Shoes
             {
                 extra_rows_needed++;
 
@@ -1399,11 +1393,6 @@ namespace ArmorBuffs
                 dimensions.Y += extra_rows_needed * Math.Max((int)font.MeasureString("TT").Y, 48);
                 __result = dimensions;
             }
-
-
-          
-
-
         }
 
 
@@ -1437,6 +1426,82 @@ namespace ArmorBuffs
                 effects.Speed.Value += 1f;
                 effects.LuckLevel.Value += 1f;
             }
+
+            if (__instance.QualifiedItemId.Equals("(B)855")) //Dragon Shoes
+            {
+                effects.Speed.Value += 3f;
+                effects.LuckLevel.Value += 2f;
+                effects.AttackMultiplier.Value += 2f;
+            }
+            if (__instance.QualifiedItemId.Equals("(B)853")) //CinderClown Shoes
+            {
+                effects.Speed.Value += 2f;
+                effects.LuckLevel.Value += 2f;
+                effects.AttackMultiplier.Value += 2f;
+            }
+            if (__instance.QualifiedItemId.Equals("(B)504")) //Sneakers
+            {
+                effects.Speed.Value += 2f;
+            }
+            if (__instance.QualifiedItemId.Equals("(B)505")) //Rubber Boots
+            {
+                effects.Speed.Value += 0.5f;
+            }
+            if (__instance.QualifiedItemId.Equals("(B)506")) //Leather Boots
+            {
+                effects.Speed.Value += 0.5f;
+            }
+            if (__instance.QualifiedItemId.Equals("(B)507")) //Work Boots
+            {
+                effects.Speed.Value += 0.5f;
+            }
+            if (__instance.QualifiedItemId.Equals("(B)509")) //Tundra Boots
+            {
+                effects.Speed.Value += 0.5f;
+            }
+            if (__instance.QualifiedItemId.Equals("(B)510))")) //Therml Boots
+            {
+                effects.Speed.Value += 0.5f;
+            }
+
+            if (__instance.QualifiedItemId.Equals("(B)508")) //Combat Boots
+            {
+                effects.Speed.Value += 1f;
+            }
+            if (__instance.QualifiedItemId.Equals("(B)511")) //Dark Boots
+            {
+                effects.Speed.Value += 0.5f;
+            }
+            if (__instance.QualifiedItemId.Equals("(B)512")) //Firewalker Boots
+            {
+                effects.Speed.Value += 0.5f;
+            }
+            if (__instance.QualifiedItemId.Equals("(B)514")) //Space Boots
+            {
+                effects.Speed.Value += 0.5f;
+            }
+            if (__instance.QualifiedItemId.Equals("(B)513")) //Genie Boots
+            {
+                effects.Speed.Value += 1f;
+                effects.LuckLevel.Value += 1f;
+            }
+            if (__instance.QualifiedItemId.Equals("(B)515")) //CowHuman Boots
+            {
+                effects.FarmingLevel.Value += 1f;
+                effects.ForagingLevel.Value += 1f; ;
+            }
+            if (__instance.QualifiedItemId.Equals("(B)804")) //Emily Boots
+            {
+                effects.Speed.Value += 1f;
+                effects.LuckLevel.Value += 2f;
+            }
+            if (__instance.QualifiedItemId.Equals("(B)878")) //Crystal Shoes
+            {
+                effects.Speed.Value += 2f;
+                effects.LuckLevel.Value += 2f;
+                effects.AttackMultiplier.Value += 2f;
+            }
+
 
 
             //Tops
@@ -1726,7 +1791,28 @@ namespace ArmorBuffs
                 effects.AttackMultiplier.Value += 0.3f;
                 effects.Defense.Value += 4f;
             }
-
+            if (__instance.QualifiedItemId.Equals("(S)ApryllForever.ArmorBuffs_ClamshellBra")) //Mermaid Shell Top
+            {
+                effects.Speed.Value += 1f;
+                effects.AttackMultiplier.Value += 0.3f;
+                effects.CriticalChanceMultiplier.Value += 0.1f;
+                effects.LuckLevel.Value += 1;
+            }
+            if (__instance.QualifiedItemId.Equals("(S)ApryllForever.ArmorBuffs_IndigoSirenShirt"))
+            {
+                effects.Speed.Value += 1f;
+                effects.LuckLevel.Value += 3f;
+            }
+            if (__instance.QualifiedItemId.Equals("(S)ApryllForever.ArmorBuffs_MermaidActionVest"))
+            {
+                effects.Speed.Value += 1f;
+                effects.AttackMultiplier.Value += 0.3f;
+            }
+            if (__instance.QualifiedItemId.Equals("(S)ApryllForever.ArmorBuffs_MermaidActionCorset"))
+            {
+                effects.Speed.Value += 1f;
+                effects.AttackMultiplier.Value += 0.3f;
+            }
 
             //Hat!!!!!! You should have seen the weird bug I somehow caused!
 
@@ -2129,7 +2215,11 @@ namespace ArmorBuffs
 
                     case "(S)1297": //Island Bikini
                     case "(S)1134": //Regular Bikini
-
+                        CharacterData data = __instance.GetData();
+                        if (data.CustomFields.ContainsKey("ClothesGiveBuffs.NotFlirt"))
+                        {
+                            break;
+                        }
                         // if (BikiniFlirt == false)
                         if (!bikiniDIalogue.Contains(__instance.Name) && Config.Flirt)
                         {
